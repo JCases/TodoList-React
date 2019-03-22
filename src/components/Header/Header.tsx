@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { ContentHeader } from './Style';
+
+
 export class Header extends Component<any, any> {
     constructor(props: any) {
         super(props);
@@ -10,9 +13,9 @@ export class Header extends Component<any, any> {
 
     render() {
         return (
-            <div className="Header">
+            <ContentHeader>
                 <h1>TodoList</h1>
-            </div>
+            </ContentHeader>
             
         );
     }

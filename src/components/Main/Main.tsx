@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
-import { ListTodo } from './ListTodo';
+import { ContentMain } from './Style';
+import { Button } from '../../shared/styles/Style';
+
+import { ListTodo } from '../ListTodo/ListTodo';
 
 export class Main extends Component<any, any> {
     constructor(props: any) {
@@ -12,10 +15,10 @@ export class Main extends Component<any, any> {
 
     render() {
         return (
-            <main className="Main">
-                <button> PENE </button>
+            <ContentMain>
+                <Button> BUTTON </Button>
                 <ListTodo />
-            </main>
+            </ContentMain>
         );
     }
 }

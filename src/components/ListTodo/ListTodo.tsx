@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { ContentListTodo } from './Style';
+
 export class ListTodo extends Component<any, any> {
     constructor(props: any) {
         super(props);
@@ -7,7 +9,7 @@ export class ListTodo extends Component<any, any> {
 
     render() {
         return (
-            <div></div>
+            <ContentListTodo></ContentListTodo>
         );
     }
 }

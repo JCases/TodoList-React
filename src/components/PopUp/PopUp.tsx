@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { ContentPopUp } from './Style';
+
 export class PopUp extends Component<any, any> {
     constructor(props: any) {
         super(props);
@@ -10,9 +12,9 @@ export class PopUp extends Component<any, any> {
 
     render() {
         return (
-            <div>
+            <ContentPopUp>
                 
-            </div>
+            </ContentPopUp>
         );
     }
 }

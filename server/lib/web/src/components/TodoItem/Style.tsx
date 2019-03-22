@@ -1,4 +1,4 @@
 import Style from 'styled-components';
 
-export const ContentListTodo = Style.div`
+export const ContentTodoItem = Style.div`
 `;

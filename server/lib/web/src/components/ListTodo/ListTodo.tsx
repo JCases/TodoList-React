@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { ContentListTodo } from './Style';
+import { TodoItem } from '../TodoItem/TodoItem';
 
 export class ListTodo extends Component<any, any> {
     constructor(props: any) {
@@ -9,7 +10,9 @@ export class ListTodo extends Component<any, any> {
 
     render() {
         return (
-            <ContentListTodo></ContentListTodo>
+            <ContentListTodo>
+                <TodoItem id={1} label="ALGO DE TEXTO PARA VERLO" completed={false} />
+            </ContentListTodo>
         );
     }
 }

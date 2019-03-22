@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-import { ContentMain } from './Style';
-import { Button } from '../../shared/styles/Style';
+import { ContentMain, PopUpButton } from './Style';
 
 import { ListTodo } from '../ListTodo/ListTodo';
 
@@ -16,7 +15,7 @@ export class Main extends Component<any, any> {
     render() {
         return (
             <ContentMain>
-                <Button> BUTTON </Button>
+                <PopUpButton> BUTTON </PopUpButton>
                 <ListTodo />
             </ContentMain>
         );

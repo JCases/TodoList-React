@@ -1,4 +1,4 @@
-// TODO
+// TODO INTERFACE
 export interface ITodoItem {
   id?: string,
   label?: string,

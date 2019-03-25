@@ -12,6 +12,7 @@ export class ListTodo extends Component<any, any> {
     return (
       <ContentListTodo>
         <TodoItem id="1" label="ALGO DE TEXTO PARA VERLO" completed={false} />
+        <TodoItem id="2" label="ALGO DE TEXTO PARA VERLO" completed={false} />
       </ContentListTodo>
     );
   }

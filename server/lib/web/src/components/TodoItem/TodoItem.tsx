@@ -17,7 +17,7 @@ export class TodoItem extends Component<ITodoItem, any> {
     return (
       <ContentTodoItem>
         <input type="checkbox" name="completed" checked={this.state.completed} onChange={(event) => this.onChange(event)}></input>
-        <text>{this.state.label}</text>
+        <span>{this.state.label}</span>
       </ContentTodoItem>
     );
   }

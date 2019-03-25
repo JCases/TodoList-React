@@ -1,7 +1,7 @@
-import { createStore, combineReducers } from 'redux';
+import { combineReducers, createStore } from 'redux';
 
 const reducer: any = (state: any, action: any) => {
-    return state || null;
+  return state || null;
 };
 
 const initialState: any = {
@@ -9,8 +9,7 @@ const initialState: any = {
 };
 
 const cReducer = combineReducers({
-    reducer,
+  reducer,
 });
 
 export const store = createStore(cReducer, initialState);
-

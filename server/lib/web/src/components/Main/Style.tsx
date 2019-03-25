@@ -12,6 +12,6 @@ export const ContentMain = Style.div`
 `;
 
 export const PopUpButton = Style(Button)`
-    height: 2rem;    
+    height: 2rem;
     width: 6rem;
 `;

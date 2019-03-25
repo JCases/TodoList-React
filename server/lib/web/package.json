@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@boonagency/tslint": "^1.0.4",
     "@types/jest": "24.0.11",
     "@types/node": "11.11.4",
     "@types/react": "16.8.8",
@@ -12,7 +13,8 @@
     "react-redux": "^6.0.1",
     "react-scripts": "2.1.8",
     "redux": "^4.0.1",
-    "styled-components": "^4.1.3"
+    "styled-components": "^4.1.3",
+    "tslint": "^5.14.0"
   },
   "scripts": {
     "start": "react-scripts start",

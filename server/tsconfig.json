@@ -25,8 +25,5 @@
     "jsx": "preserve",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
-  },
-  "include": [
-    "src"
-  ]
+  }
 }

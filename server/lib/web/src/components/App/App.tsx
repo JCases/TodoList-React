@@ -4,13 +4,13 @@ import { Header } from '../Header/Header';
 import { Main } from '../Main/Main';
 import { PopUp } from '../PopUp/PopUp';
 
-import { store } from '../../reducers/index';
 import { Provider } from 'react-redux';
+import { store } from '../../reducers/index';
 
 import { ContentApp } from './Style';
 
 class App extends Component {
-  render() {
+  public render() {
     return (
       <Provider store={store}>
         <ContentApp>

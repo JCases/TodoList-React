@@ -16,7 +16,7 @@ export default function (sequelize: Sequelize, dataTypes: DataTypes): SequelizeS
       primaryKey: true,
     },
     label: {
-      type: dataTypes.TEXT(),
+      type: dataTypes.STRING(191),
       allowNull: false,
     },
     completed: {
@@ -26,11 +26,6 @@ export default function (sequelize: Sequelize, dataTypes: DataTypes): SequelizeS
   }, {
       timestamps: true,
       paranoid: true,
-      indexes: [
-        {
-          fields: ['label'],
-        },
-      ],
     });
 
   return todos as any;

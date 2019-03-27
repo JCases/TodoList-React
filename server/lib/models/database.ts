@@ -19,7 +19,6 @@ class Database {
 
   constructor() {
     this.baseName = path.basename(module.filename);
-
     this.mSequelize = new SequelizeStatic(Environment.dbName!, Environment.dbUser!, Environment.dbPass!, Environment.dbConfig);
     this.mModels = ({} as any);
 
@@ -36,9 +35,9 @@ class Database {
 
     const myModels = this.getModels();
 
-    this.mSequelize.sync({ force: false }).then(async result => {
+    this.mSequelize.sync({ force: true }).then(async result => {
       if ((await myModels.Todo.count()) === 0) {
-        myModels.Todo.create({ label: 'Hacer un Todo List' });
+        myModels.Todo.create({ label: 'Hacer un Todo List', completed: true });
         myModels.Todo.create({ label: 'Entender la estructura de Jose' });
       }
     });

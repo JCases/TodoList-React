@@ -1,8 +1,8 @@
 // TODO INTERFACE
 export interface ITodoItem {
-  id?: string,
-  label?: string,
-  completed?: boolean,
+  id?: string;
+  label?: string;
+  completed?: boolean;
 }
 
 // ERRORS

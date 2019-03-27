@@ -1,10 +1,9 @@
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import express from 'express';
 import './models/database';
 
 import TodoRouter from './routes/todo';
-
-import { Environment } from './utils/environment';
 
 class App {
   public app: express.Application;
@@ -19,6 +18,7 @@ class App {
   private middlewares() {
     this.app.use(bodyParser.json({ limit: '50mb' }));
     this.app.use(bodyParser.urlencoded({ extended: false }));
+    this.app.use(cors());
   }
 
   private routes() {
@@ -34,3 +34,5 @@ class App {
     });
   }
 }
+const app = new App();
+export default app.app;

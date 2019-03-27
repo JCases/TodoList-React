@@ -1,0 +1,12 @@
+{
+  "watch": [
+    "lib",
+    "../shared"
+  ],
+  "ext": "ts",
+  "ignore": [
+    "lib/**/*.spec.ts",
+    "lib/web"
+  ],
+  "exec": "node --inspect=0.0.0.0:9229 -r ts-node/register ./lib/index.ts | pino-pretty -t -e -c"
+ }

@@ -1,29 +1,46 @@
 {
   "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "pretty": true,
+    "sourceMap": true,
+    "target": "es6",
+    "lib": [
+      "es2017"
+    ],
     "plugins": [
       {
         "name": "typescript-styled-plugin"
       }
     ],
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "outDir": "./dist",
+    "rootDir": "./lib",
+    "noImplicitReturns": false,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "esModuleInterop": true,
     "allowJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
-  }
+  },
+  "include": [
+    "lib/**/*.ts",
+    "lib/migrations/00_addSponsorURL.js",
+  ],
+  "exclude": [
+    "node_modules",
+    "__tests__/**/*.ts",
+    "lib/web",
+    "lib/shared/__tests__"
+  ]
 }

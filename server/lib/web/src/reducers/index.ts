@@ -1,15 +1,18 @@
-import { combineReducers, createStore } from 'redux';
+import { combineReducers, createStore, Reducer } from 'redux';
+import { ITodoItem } from '../../../shared/interfaces';
 
-const reducer: any = (state: any, action: any) => {
-  return state || null;
+export interface IInitialState {
+  visible: boolean;
+  todos: ITodoItem[];
+}
+
+const initialState: IInitialState = {
+  todos: [],
+  visible: false,
 };
 
-const initialState: any = {
-
+const reducer: Reducer<IInitialState> =  (state: IInitialState = initialState, {}): IInitialState => {
+  return { ...state };
 };
 
-const cReducer = combineReducers({
-  reducer,
-});
-
-export const store = createStore(cReducer, initialState);
+export const store = createStore(reducer);

@@ -10,19 +10,19 @@ export class TodosRouter {
   }
 
   public getTodos(req: Request, res: Response, next: NextFunction) {
-    todoBackend.getTodos().then(res.json).catch(next);
+    todoBackend.getTodos().then(r => res.json(r)).catch(next);
   }
 
   public createTodo(req: Request, res: Response, next: NextFunction) {
-    todoBackend.createTodo(req.body).then(res.json).catch(next);
+    todoBackend.createTodo(req.body).then(r => res.json(r)).catch(next);
   }
 
   public updateTodo(req: Request, res: Response, next: NextFunction) {
-    todoBackend.updateTodo(req.body).then(res.json).catch(next);
+    todoBackend.updateTodo(req.body).then(r => res.json(r)).catch(next);
   }
 
   public deleteTodo(req: Request, res: Response, next: NextFunction) {
-    todoBackend.deleteTodo(req.body).then(res.json).catch(next);
+    todoBackend.deleteTodo(req.body).then(r => res.json(r)).catch(next);
   }
 
   public init(){

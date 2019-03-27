@@ -10,13 +10,13 @@ export class Environment {
   public static secret = 'Zx1!4Aasd1s6LiaRt1235O';
   public static issuer = 'booniverse2019';
 
-  public static dbName = process.env.POSTGRES_DB || process.env.RDS_DB_NAME;
-  public static dbPass = process.env.POSTGRES_PASSWORD || process.env.RDS_PASSWORD;
-  public static dbUser = process.env.RDS_USERNAME || 'sqlite';
+  public static dbName = "todos";
+  public static dbPass = "";
+  public static dbUser = "root";
   public static dbConfig: any = {
     host: process.env.POSTGRES_HOST || process.env.RDS_HOSTNAME,
     port: process.env.RDS_PORT,
-    dialect: 'sqlite',
+    dialect: 'mysql',
     timezone: 'Europe/Dublin',
     isolationLevel: 'READ COMMITTED', // Needs this to lock transactions
     pool: {

@@ -13,7 +13,6 @@ export class PopUp extends Component<any, any> {
   public render() {
     return (
       <ContentPopUp>
-
       </ContentPopUp>
     );
   }

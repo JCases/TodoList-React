@@ -22,14 +22,14 @@ export class TodosRouter {
   }
 
   public deleteTodo(req: Request, res: Response, next: NextFunction) {
-    todoBackend.deleteTodo(req.body).then(r => res.json(r)).catch(next);
+    todoBackend.deleteTodo(req.params.id).then(r => res.json(r)).catch(next);
   }
 
   public init(){
     this.router.get('/', this.getTodos);
     this.router.post('/', this.createTodo);
     this.router.put('/', this.updateTodo);
-    this.router.delete('/', this.deleteTodo);
+    this.router.delete('/:id', this.deleteTodo);
   }
 }
 

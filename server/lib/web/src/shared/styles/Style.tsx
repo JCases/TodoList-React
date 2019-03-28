@@ -7,4 +7,5 @@ export const Button = Style.button`
     color: white;
     margin: 0.5em 1em;
     padding: 0.25em 1em;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
 `;

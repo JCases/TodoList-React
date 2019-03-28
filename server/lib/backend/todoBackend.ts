@@ -22,8 +22,8 @@ class TodoBackend {
     return { result: (await models.Todo.update(todo, { where: { id: todo.id! }, returning: true }))[1][0] };
   }
 
-  public async deleteTodo(todo: ITodoItem) {
-    return { result:  (await models.Todo.destroy({ where: { id: todo.id! } } )) };
+  public async deleteTodo(id: string) {
+    return { result: (await models.Todo.destroy({ where: { id } } )) };
   }
 }
 

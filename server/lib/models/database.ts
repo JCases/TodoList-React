@@ -39,6 +39,7 @@ class Database {
       if ((await myModels.Todo.count()) === 0) {
         myModels.Todo.create({ label: 'Hacer un Todo List', completed: true });
         myModels.Todo.create({ label: 'Entender la estructura de Jose' });
+        myModels.Todo.create({ label: 'Jose, el Styled Components es una mierda' });
       }
     });
 

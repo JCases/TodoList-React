@@ -9,7 +9,8 @@ export const ContentMain = Style.div`
     background-color: #FFFFFF;
     overflow-y: auto;
     height: 60vh;
-    width: 40vw;
+    width: 50vw;
+    overflow-x: hidden;
 
     ::-webkit-scrollbar {
         width: 2px;

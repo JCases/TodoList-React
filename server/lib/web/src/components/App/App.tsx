@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 import { Header } from '../Header/Header';
-import { Main } from '../Main/Main';
-import { PopUp } from '../PopUp/PopUp';
+import Main from '../Main/Main';
+import PopUp from '../PopUp/PopUp';
 
 import { Provider } from 'react-redux';
 import { store } from '../../reducers/index';

@@ -9,3 +9,19 @@ export const Button = Style.button`
     padding: 0.25em 1em;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
 `;
+
+export const TextInput = Style.input`
+  margin-left: 2vw;
+
+  @media (max-width: 600px) {
+    width: 100px;
+  }
+
+  @media (max-width: 460px) {
+    width: 60px;
+  }
+
+  @media (max-width: 400px) {
+    width: 40px;
+  }
+`;

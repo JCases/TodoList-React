@@ -2,6 +2,10 @@ import Style from 'styled-components';
 
 import { Button } from '../../shared/styles/Style';
 
+import { Cancel } from 'styled-icons/material/Cancel';
+import { Delete } from 'styled-icons/material/Delete';
+import { Save } from 'styled-icons/material/Save';
+
 export const ContentTodoItem = Style.div`
   display: flex;
   align-items: center;
@@ -37,18 +41,22 @@ export const ButtonCancel = Style(Button)`
   color:#ffffff;
 `;
 
-export const TextInput = Style.input`
-  margin-left: 2vw;
+export const ButtonDelete = Style(Button)`
+  background-color: #000000;
+  color:#ffffff;
+`;
 
-  @media (max-width: 600px) {
-    width: 100px;
-  }
+export const SaveIcon = Style(Save)`
+  color: white;
+  width: 18px;
+`;
 
-  @media (max-width: 460px) {
-    width: 60px;
-  }
+export const CancelIcon = Style(Cancel)`
+  color: white;
+  width: 18px;
+`;
 
-  @media (max-width: 400px) {
-    width: 40px;
-  }
+export const DeleteIcon = Style(Delete)`
+  color: white;
+  width: 18px;
 `;

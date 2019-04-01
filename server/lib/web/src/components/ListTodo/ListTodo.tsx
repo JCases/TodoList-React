@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { IResponse, ITodoItem } from '../../../../shared/interfaces';
+import { ITodoItem } from '../../../../shared/interfaces';
 import { TodoItem } from '../TodoItem/TodoItem';
 import { ContentListTodo } from './Style';
 
-import { addTodo } from '../../actions';
-import todosHttp from '../../utils/http';
+import { getTodos } from '../../actions';
+import { IInitialState } from '../../reducers';
 
-class ListTodo extends Component<any, { todos: ITodoItem[] }> {
+interface IStatePopUp {
+  todos: ITodoItem[];
+}
+
+interface IPropsPopUp {
+  todos?: ITodoItem[];
+  getTodos: () => ITodoItem[];
+}
+
+class ListTodo extends Component<IPropsPopUp, IStatePopUp> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -17,10 +26,9 @@ class ListTodo extends Component<any, { todos: ITodoItem[] }> {
   }
 
   public async componentDidMount() {
+    console.log(this.props);
     try {
-      this.setState({
-        todos: (await this.getTodos()).data.result!,
-      });
+      this.props.getTodos();
     } catch (error) {
       console.error(error);
     }
@@ -29,21 +37,21 @@ class ListTodo extends Component<any, { todos: ITodoItem[] }> {
   public render() {
     return (
       <ContentListTodo>
-        {this.state.todos.map(t => <TodoItem key={t.id} id={t.id} label={t.label} completed={t.completed} refreshTodos={ (id) => this.refreshTodos(id) } />)}
+        { this.props.todos ? this.props.todos!.map(t => <TodoItem key={t.id} id={t.id} label={t.label} completed={t.completed} refreshTodos={ (id) => this.refreshTodos(id) } />) : null}
       </ContentListTodo>
     );
   }
 
   private async refreshTodos(id: string) {
-    this.setState({ todos: this.state.todos.filter(t => t.id! !== id) });
+    this.setState({ todos: this.props.todos!.filter(t => t.id! !== id) });
   }
 
-  private async getTodos() {
-    return todosHttp.get<IResponse<ITodoItem[]>>('/v1/todo');
+  private getTodos() {
+    return this.props.getTodos();
   }
 }
 
-const mapStateToProps = () => ({});
-const mapDispatchToProps = (dispatch: any) => ({ addTodo: (todo: ITodoItem) => dispatch(addTodo(todo)) });
+const mapStateToProps = (state: IInitialState) => ({ todos: state.todos });
+const mapDispatchToProps = (dispatch: any) => ({ getTodos: () => dispatch(getTodos()) });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListTodo);

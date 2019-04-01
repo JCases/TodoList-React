@@ -1,5 +1,5 @@
 import { routerMiddleware } from 'connected-react-router';
-import { createStore, Reducer, compose, applyMiddleware } from 'redux';
+import { applyMiddleware, combineReducers, compose, createStore, Reducer } from 'redux';
 import ReduxThunk from 'redux-thunk';
 
 import { ITodoItem } from '../../../shared/interfaces';
@@ -36,7 +36,8 @@ const reducer: Reducer<IInitialState> =  (state: IInitialState = initialState, a
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const store = createStore(
-composeEnhancers(
+  combineReducers({todos: reducer}),
+  composeEnhancers(
     applyMiddleware(
         routerMiddleware(history),
         ReduxThunk,

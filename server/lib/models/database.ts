@@ -1,7 +1,7 @@
 import SequelizeStatic from 'sequelize'; // tslint:disable-next-line
 import { Sequelize } from 'sequelize';
+import sqlite3 from 'sqlite3';
 
-import { Environment } from './../utils/environment';
 
 import * as path from 'path';
 import * as fs from 'fs';
@@ -19,7 +19,9 @@ class Database {
 
   constructor() {
     this.baseName = path.basename(module.filename);
-    this.mSequelize = new SequelizeStatic(Environment.dbName!, Environment.dbUser!, Environment.dbPass!, Environment.dbConfig);
+    new sqlite3.Database('./data.db');
+
+    this.mSequelize = new SequelizeStatic('sqlite:./data.db');
     this.mModels = ({} as any);
 
     fs.readdirSync(__dirname).filter(file => file !== this.baseName && file.indexOf('.map') < 0 && file.indexOf('.DS_Store') < 0).forEach(file => {

@@ -51,7 +51,7 @@ class ListTodo extends Component<IPropsPopUp, IStatePopUp> {
   }
 }
 
-const mapStateToProps = (state: IInitialState) => ({ todos: state.todos });
+const mapStateToProps = (state: any) => ({ todos: state.todos!.todos });
 const mapDispatchToProps = (dispatch: any) => ({ getTodos: () => dispatch(getTodos()) });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListTodo);

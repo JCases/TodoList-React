@@ -17,6 +17,7 @@
     "reflect-metadata": "^0.1.13",
     "sequelize": "^4.34",
     "sequelize-typescript": "^1.0.0-alpha.9",
+    "sqlite3": "^4.0.6",
     "ts-node": "^8.0.3",
     "tslint": "^5.14.0",
     "typescript": "^3.3.4000"
@@ -26,7 +27,8 @@
     "@types/dotenv": "^6.1.0",
     "@types/express": "^4.16.1",
     "@types/node": "^11.11.6",
-    "@types/sequelize": "^4.27.44"
+    "@types/sequelize": "^4.27.44",
+    "@types/sqlite3": "^3.1.5"
   },
   "scripts": {
     "start": "nodemon -L"

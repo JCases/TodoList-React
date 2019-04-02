@@ -39,14 +39,13 @@ class Database {
 
     this.mSequelize.sync({ force: true }).then(async result => {
       if ((await myModels.Todo.count()) === 0) {
-        for (let i = 0; i < 10; i++) {
           myModels.Todo.create({ label: 'Hacer un Todo List', completed: true });
           myModels.Todo.create({ label: 'Entender la estructura de Jose' });
-          myModels.Todo.create({ label: 'Jose, el Styled Components es una mierda' });
-        }
+          myModels.Todo.create({ label: 'Jose, el Styled Components es una mierda', completed: true });
+          myModels.Todo.create({ label: 'Hola a todos chavales, bienvenidos a un nuevo video...' });
+          myModels.Todo.create({ label: 'Me quiero morir porque mi vida es una mierda: Sergio.' });
       }
     });
-
   }
 
   public getModels() {

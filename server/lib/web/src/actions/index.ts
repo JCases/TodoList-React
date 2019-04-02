@@ -16,12 +16,11 @@ export const setVisibility = (visibility: boolean) => ({ type: constants.SET_VIS
 export const getTodosAction = () => ({ type: constants.GET_TODOS });
 export const todosReceivedAction = (todos: ITodoItem[]) => ({ type: constants.TODOS_RECEIVED, data: todos });
 
-export const addTodo = (todo: ITodoItem) => ({ type: constants.ADD_TODO, data: todo });
-export const modifyTodo = (todo: ITodoItem) => ({ type: constants.MODIFY_TODO, data: todo });
-export const deleteTodo = (todo: ITodoItem) => ({ type: constants.DELETE_TODO, data: todo });
+export const addTodo = (todos: ITodoItem) => ({ type: constants.ADD_TODO, data: todos });
+export const modifyTodo = (todos: ITodoItem) => ({ type: constants.MODIFY_TODO, data: todos });
+export const deleteTodo = (todos: ITodoItem) => ({ type: constants.DELETE_TODO, data: todos });
 
 export const getTodos = () => (dispatch: Dispatch) => {
-  console.log('DUSK');
   dispatch(getTodosAction());
   return todosHttp.get<IResponse<ITodoItem[]>>('/v1/todo').then(r => {
     if (r.data && r.data.result) dispatch(todosReceivedAction(r.data.result!));

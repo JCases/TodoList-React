@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { ContentMain, PopUpButton } from './Style';
 
 import { setVisibility } from '../../actions';
-import { IInitialState } from '../../reducers/index';
 
 import ListTodo from '../ListTodo/ListTodo';
 
@@ -28,7 +27,7 @@ class Main extends Component<IPropsMain, any> {
   }
 }
 
-const mapStateToProps = (state: IInitialState) => ({ visibility: state.visible });
+const mapStateToProps = (state: any) => ({ visibility: state.todos!.visible });
 const mapDispatchToProps = (dispatch: any) => ({ setVisibility: (visibility: boolean) => dispatch(setVisibility(visibility)) });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

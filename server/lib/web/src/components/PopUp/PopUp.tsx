@@ -5,9 +5,8 @@ import { Button, TextInput } from '../../shared/styles/Style';
 import { Checkbox, ContentInfo, ContentPopUp } from './Style';
 
 import { IResponse, ITodoItem } from '../../../../shared/interfaces/index';
-import { IInitialState } from '../../reducers/index';
 
-import { setVisibility } from '../../actions';
+import { addTodo, setVisibility } from '../../actions';
 import todosHttp from '../../utils/http';
 
 interface IStatePopUp {
@@ -17,7 +16,9 @@ interface IStatePopUp {
 
 interface IPropsPopUp {
   visibility?: boolean;
+  todos?: ITodoItem[];
   setVisibility?: (visibility: boolean) => void;
+  addTodo?: (todos: ITodoItem) => void;
 }
 
 class PopUp extends Component<IPropsPopUp, IStatePopUp> {
@@ -48,15 +49,19 @@ class PopUp extends Component<IPropsPopUp, IStatePopUp> {
 
   private addTodo(event: any) {
     if (this.state.label!.length > 0) {
-      return todosHttp.post<IResponse<ITodoItem>>('/v1/todo', { label: this.state.label!, completed: this.state.completed! }).then(e => {
+      return todosHttp.post<IResponse<ITodoItem>>('/v1/todo', { label: this.state.label!, completed: this.state.completed! }).then(r => {
         this.setState({ label: '' });
         this.props.setVisibility!(!this.props.visibility);
+        this.props.addTodo!(r.data.result!);
       });
     }
   }
 }
 
-const mapStateToProps = (state: IInitialState) => ({ visibility: state.visible });
-const mapDispatchToProps = (dispatch: any) => ({ setVisibility: (visibility: boolean) => dispatch(setVisibility(visibility)) });
+const mapStateToProps = (state: any) => ({ visibility: state.todos!.visible });
+const mapDispatchToProps = (dispatch: any) => ({
+  setVisibility: (visibility: boolean) => dispatch(setVisibility(visibility)),
+  addTodo: (todos: ITodoItem) => dispatch(addTodo(todos)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(PopUp);

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Style from 'styled-components';
 import { TextInput } from '../../shared/styles/Style';
@@ -7,6 +8,7 @@ import { ButtonCancel, ButtonDelete, ButtonSave, CancelIcon, Checkbox, ContentTo
 import { IResponse, ITodoItem } from '../../../../shared/interfaces/index';
 
 import { AxiosResponse } from 'axios';
+import { deleteTodo, modifyTodo } from '../../actions';
 import todosHttp from '../../utils/http';
 
 interface IStateTodoItem {
@@ -16,7 +18,8 @@ interface IStateTodoItem {
 }
 
 interface IPropsTodoItem extends ITodoItem {
-  refreshTodos?: (id: string) => Promise<void>;
+  modifyTodo?: (todos: ITodoItem) => void;
+  deleteTodo?: (todos: ITodoItem) => void;
 }
 
 enum Buttons {
@@ -25,7 +28,7 @@ enum Buttons {
   save = 'save',
 }
 
-export class TodoItem extends Component<IPropsTodoItem, IStateTodoItem> {
+class TodoItem extends Component<IPropsTodoItem, IStateTodoItem> {
   private onChange: Promise<void> | undefined;
   private onDelete: Promise<void | AxiosResponse<any>> | undefined;
 
@@ -74,7 +77,7 @@ export class TodoItem extends Component<IPropsTodoItem, IStateTodoItem> {
   }
 
   private async onEditClose(edit: Buttons, value?: boolean | string) {
-    if (edit === Buttons.save && this.state.newLabel!.length > 0) {
+    if (edit === Buttons.save && this.state.newLabel!.trim().length > 0) {
       await this.onChangeState(value);
       this.setState({ editable: !this.state.editable });
     }
@@ -89,12 +92,13 @@ export class TodoItem extends Component<IPropsTodoItem, IStateTodoItem> {
 
   private async onDeleteState(value?: ITodoItem) {
     await this.deleteTodo(value);
-    this.props.refreshTodos!(value!.id!);
+    this.props.deleteTodo!(value!);
   }
 
   private async onChangeState(value?: boolean | string) {
     await this.setStateAsync(value);
-    this.changeTodo(value);
+    await this.changeTodo(value);
+    this.props.modifyTodo!(this.state.todo!);
   }
 
   private deleteTodo(value?: ITodoItem) {
@@ -127,3 +131,11 @@ export class TodoItem extends Component<IPropsTodoItem, IStateTodoItem> {
     });
   }
 }
+
+const mapStateToProps = (state: any) => ({});
+const mapDispatchToProps = (dispatch: any) => ({
+  modifyTodo: (todos: ITodoItem) => dispatch(modifyTodo(todos)),
+  deleteTodo: (todos: ITodoItem) => dispatch(deleteTodo(todos)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoItem);

@@ -16,18 +16,26 @@ const initialState: IInitialState = {
 };
 
 const reducer: Reducer<IInitialState> =  (state: IInitialState = initialState, action): IInitialState => {
-  console.log(action);
   switch (action.type) {
     case constants.SET_VISIBILITY:
       return { ...state, visible: action.data };
-    case constants.GET_TODOS:
+    case constants.TODOS_RECEIVED:
       return { ...state, todos: action.data };
     case constants.ADD_TODO:
-      return { ...state, todos: action.data };
+      // New Array for Update UI in First Position
+      const todosAdd = [...state.todos!];
+      todosAdd.unshift(action.data);
+      return { ...state, todos: todosAdd };
     case constants.MODIFY_TODO:
-      return { ...state, todos: action.data };
+      // Modify Object Inside New Array for Update UI
+      const position = state.todos!.indexOf(state.todos!.find(t => t.id! === action.data.id)!);
+      const todosModify = [...state.todos!];
+      todosModify.splice(position, 1, action.data);
+      return { ...state, todos: todosModify };
     case constants.DELETE_TODO:
-      return { ...state, todos: action.data };
+      // Delete Object Inside New Array for Update UI
+      const todosDelete = [...state.todos!.filter(t => t.id! !== action.data.id)];
+      return { ...state, todos: todosDelete };
     default:
       return state || initialState;
   }
@@ -36,7 +44,7 @@ const reducer: Reducer<IInitialState> =  (state: IInitialState = initialState, a
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const store = createStore(
-  combineReducers({todos: reducer}),
+  combineReducers({ todos: reducer }),
   composeEnhancers(
     applyMiddleware(
         routerMiddleware(history),

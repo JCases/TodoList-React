@@ -6,17 +6,13 @@ export class Environment {
   public static logFolder = process.env.LOG_FOLDER || path.resolve('./logs');
   public static port = 3005;
 
-  // LOGIN WEB TOKEN
-  public static secret = 'Zx1!4Aasd1s6LiaRt1235O';
-  public static issuer = 'booniverse2019';
-
   public static dbName = "todos";
   public static dbPass = "";
   public static dbUser = "root";
   public static dbConfig: any = {
     host: process.env.POSTGRES_HOST || process.env.RDS_HOSTNAME,
     port: process.env.RDS_PORT,
-    dialect: 'mysql',
+    dialect: 'sqlite',
     timezone: 'Europe/Dublin',
     isolationLevel: 'READ COMMITTED', // Needs this to lock transactions
     pool: {

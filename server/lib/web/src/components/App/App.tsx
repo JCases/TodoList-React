@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 
 import { Header } from '../Header/Header';
 import Main from '../Main/Main';
@@ -13,11 +15,14 @@ class App extends Component {
   public render() {
     return (
       <Provider store={store}>
-        <ContentApp>
-          <Header />
-          <Main />
-          <PopUp />
-        </ContentApp>
+        <BrowserRouter>
+          <ContentApp>
+            <Header />
+            <Route exact path="/login" component={ Main } />
+            <Route path="/" component={ Main } />
+            <Route exact path="/add" component={ PopUp } />
+          </ContentApp>
+        </BrowserRouter>
       </Provider>
     );
   }

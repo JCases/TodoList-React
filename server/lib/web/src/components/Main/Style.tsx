@@ -1,5 +1,7 @@
 import Style from 'styled-components';
 
+import { Link } from 'react-router-dom';
+
 import { Button } from '../../shared/styles/Style';
 
 export const ContentMain = Style.div`
@@ -28,4 +30,9 @@ export const ContentMain = Style.div`
 export const PopUpButton = Style(Button)`
     height: 2rem;
     width: 6rem;
+`;
+
+export const CustomLink = Style(Link)`
+    color: white;
+    text-decoration: none;
 `;

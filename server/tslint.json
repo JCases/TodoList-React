@@ -1,0 +1,29 @@
+{
+    "extends": [
+      "@boonagency/tslint"
+    ],
+    "rules": {
+      "indent": [true, "spaces", 2],
+      "no-console": {
+        "options": [
+          "debug",
+          "info",
+          "log",
+          "dir",
+          "time",
+          "timeEnd",
+          "trace"
+        ],
+        "severity":"warn"
+      },
+      "variable-name": false,
+      "no-var-requires": false
+    },
+    "linterOptions": {
+      "exclude": [
+        "config/**/*.js",
+        "node_modules/**/*.ts",
+        "coverage/lcov-report/*.js"
+      ]
+    }
+  }

@@ -5,6 +5,13 @@ export interface ITodoItem {
   completed?: boolean;
 }
 
+// USER INTERFACE
+export interface IUser {
+  token?: string;
+  name?: string;
+  password?: boolean;
+}
+
 // ERRORS
 export enum Errors {
   unexpected = 'unexpected',

@@ -15,7 +15,7 @@
     "mysql2": "^1.6.5",
     "pino-pretty": "^2.5.0",
     "reflect-metadata": "^0.1.13",
-    "sequelize": "^4.34",
+    "sequelize": "^5.2.11",
     "sequelize-typescript": "^1.0.0-alpha.9",
     "sqlite3": "^4.0.6",
     "ts-node": "^8.0.3",

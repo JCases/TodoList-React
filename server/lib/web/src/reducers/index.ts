@@ -1,4 +1,5 @@
 import { routerMiddleware } from 'connected-react-router';
+import { createBrowserHistory } from 'history';
 import { applyMiddleware, combineReducers, compose, createStore, Reducer } from 'redux';
 import ReduxThunk from 'redux-thunk';
 
@@ -42,6 +43,7 @@ const reducer: Reducer<IInitialState> =  (state: IInitialState = initialState, a
 };
 
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+export const history = createBrowserHistory();
 
 export const store = createStore(
   combineReducers({ todos: reducer }),

@@ -1,13 +1,28 @@
 import Style from 'styled-components';
 
-export const Button = Style.button`
-    background: #0D47A1;
-    border-radius: 3px;
-    border: 1px solid #263238;
-    color: white;
-    margin: 0.5em 1em;
-    padding: 0.25em 1em;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+import { Card } from '@material-ui/core';
+
+export const ContentMain = Style(Card)`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #FFFFFF;
+    overflow-y: auto;
+    height: 60vh;
+    width: 50vw;
+    overflow-x: hidden;
+
+    ::-webkit-scrollbar {
+        width: 2px;
+        background-color: #263238;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: #212121;
+    }
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        background-color: #F5F5F5;
+    }
 `;
 
 export const TextInput = Style.input`

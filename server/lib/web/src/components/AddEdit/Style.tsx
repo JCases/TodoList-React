@@ -1,6 +1,8 @@
 import Style from 'styled-components';
 
-export const ContentPopUp = Style.div`
+import { Button } from '@material-ui/core';
+
+export const ContentAddEdit = Style.div`
     background-color: white;
     width: 50vw;
     height: 14vh;
@@ -20,4 +22,15 @@ export const ContentInfo = Style.div`
 
 export const Checkbox = Style.input`
   margin-left: 2vw;
+`;
+
+export const ButtonAdd = Style(Button)`
+    && {
+      margin: 10px;
+
+      @media (max-height: 450px) {
+        height: 40px;
+        font-size: 8px;
+      }
+    }
 `;

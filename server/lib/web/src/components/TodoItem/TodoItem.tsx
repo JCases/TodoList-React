@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 
 import Style from 'styled-components';
 import { TextInput } from '../../shared/styles/Style';
-import { ButtonCancel, ButtonDelete, ButtonSave, CancelIcon, Checkbox, ContentTodoItem, DeleteIcon, SaveIcon, StructureTodoItem, Text } from './Style';
+import { CancelIcon, ButtonsActions, ThemeSave, ThemeDelete, ThemeCancel, Checkbox, ContentTodoItem, DeleteIcon, SaveIcon, StructureTodoItem, Text } from './Style';
+
+import { MuiThemeProvider } from '@material-ui/core/styles';
 
 import { IResponse, ITodoItem } from '../../../../shared/interfaces/index';
 
@@ -57,18 +59,25 @@ class TodoItem extends Component<IPropsTodoItem, IStateTodoItem> {
           {!this.state.editable ?
             <React.Fragment>
               <TextTodo title="label"
-                onDoubleClick={ event => { this.setState({ editable: !this.state.editable, newLabel: this.state.todo!.label }); }}>{ this.state.todo!.label }</TextTodo>
+                onDoubleClick={event => { this.setState({ editable: !this.state.editable, newLabel: this.state.todo!.label }); }}>{this.state.todo!.label}</TextTodo>
               <Checkbox type="checkbox" title="completed"
                 checked={this.state.todo!.completed}
                 onChange={event => this.onChangeState(event.target.checked)}></Checkbox>
             </React.Fragment>
             :
             <React.Fragment>
-              <TextInput type="text" title="label" value={ this.state.newLabel } onChange={(event) => { this.setState({ newLabel: event.target.value }); }}></TextInput>
+              <TextInput type="text" title="label" value={this.state.newLabel} onChange={(event) => { this.setState({ newLabel: event.target.value }); }}></TextInput>
               <div>
-                <ButtonDelete onClick={ () => this.onEditClose(Buttons.delete) }><DeleteIcon/></ButtonDelete>
-                <ButtonCancel onClick={ () => this.onEditClose(Buttons.cancel) }><CancelIcon/></ButtonCancel>
-                <ButtonSave onClick={ () => this.onEditClose(Buttons.save, this.state.newLabel!) }><SaveIcon/></ButtonSave>
+                <MuiThemeProvider theme={ThemeDelete}>
+                  <ButtonsActions color="primary" onClick={() => this.onEditClose(Buttons.delete)}><DeleteIcon /></ButtonsActions>
+                </MuiThemeProvider>
+                <MuiThemeProvider theme={ThemeCancel}>
+                  <ButtonsActions color="primary" onClick={() => this.onEditClose(Buttons.cancel)}><CancelIcon /></ButtonsActions>
+                </MuiThemeProvider>
+                <MuiThemeProvider theme={ThemeSave}>
+                  <ButtonsActions color="primary" onClick={() => this.onEditClose(Buttons.save, this.state.newLabel!)}><SaveIcon /></ButtonsActions>
+                </MuiThemeProvider>
+                
               </div>
             </React.Fragment>}
         </StructureTodoItem>

@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 
-import { ContentMain, CustomLink, PopUpButton } from './Style';
+import { CustomLink, PopUpButton } from './Style';
+import { ContentMain } from '../../shared/styles/Style';
 
 import { setVisibility } from '../../actions';
 
@@ -18,9 +19,11 @@ class Main extends Component<IPropsMain, any> {
   public render() {
     return (
       <ContentMain>
-        <PopUpButton onClick={() => this.showPopUp()}>
-          <CustomLink to={this.props.visibility ? '/' : '/add'}>{ this.props.visibility ? 'CLOSE' : 'ADD' }</CustomLink>
-        </PopUpButton>
+        <CustomLink to={this.props.visibility ? '/' : '/add'}>
+          <PopUpButton variant="contained" color="primary" onClick={() => this.showPopUp()}>
+            { this.props.visibility ? 'CLOSE' : 'ADD' }
+          </PopUpButton>
+        </CustomLink>
         <ListTodo />
       </ContentMain>
     );

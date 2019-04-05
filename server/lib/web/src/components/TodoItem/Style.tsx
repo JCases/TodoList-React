@@ -1,10 +1,13 @@
 import Style from 'styled-components';
 
-import { Button } from '../../shared/styles/Style';
+import { Fab } from '@material-ui/core';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 import { Cancel } from 'styled-icons/material/Cancel';
 import { Delete } from 'styled-icons/material/Delete';
 import { Save } from 'styled-icons/material/Save';
+
+import { green, red, blueGrey } from '@material-ui/core/colors';
 
 export const ContentTodoItem = Style.div`
   display: flex;
@@ -31,20 +34,41 @@ export const Checkbox = Style.input`
   padding-left: 4vw;
 `;
 
-export const ButtonSave = Style(Button)`
-  background-color: #00C853;
-  color:#ffffff;
+export const ButtonsActions = Style(Fab)`
+  && {
+    width: 40px;
+    height: 40px;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
 `;
 
-export const ButtonCancel = Style(Button)`
-  background-color: #D50000;
-  color:#ffffff;
-`;
+export const ThemeSave = createMuiTheme({
+  palette: {
+    primary: green,
+  },
+  typography: {
+    useNextVariants: true,
+  },
+});
 
-export const ButtonDelete = Style(Button)`
-  background-color: #000000;
-  color:#ffffff;
-`;
+export const ThemeDelete = createMuiTheme({
+  palette: {
+    primary: blueGrey,
+  },
+  typography: {
+    useNextVariants: true,
+  },
+});
+
+export const ThemeCancel = createMuiTheme({
+  palette: {
+    primary: red,
+  },
+  typography: {
+    useNextVariants: true,
+  },
+});
 
 export const SaveIcon = Style(Save)`
   color: white;

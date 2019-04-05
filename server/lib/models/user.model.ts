@@ -1,21 +1,24 @@
-import {Table, Column, Model, HasMany, DataType, PrimaryKey, Unique} from 'sequelize-typescript';
+import {Table, Column, Model, HasMany, DataType, PrimaryKey, Unique, Length, Default} from 'sequelize-typescript';
+import Todo from './todo.model';
 
 @Table({ timestamps: true, paranoid: true })
-export class User extends Model<User> {
-  @Column(DataType.UUIDV4)
+export default class User extends Model<User> {
   @PrimaryKey
+  @Default(DataType.UUIDV4)
+  @Column(DataType.UUID)
   id?: string;
 
-  @Column
   @Unique
+  @Column
   token?: string;
 
+  @Length({ min: 2, max: 40 })
   @Column
   name?: string;
 
   @Column
   password?: string;
 
-  @HasMany(() => Todo)
+  @HasMany(() => Todo, { foreignKey: 'id' })
   todos?: Todo[];
 }

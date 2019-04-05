@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Button, TextInput } from '../../shared/styles/Style';
-import { Checkbox, ContentInfo, ContentPopUp } from './Style';
+import { TextInput } from '../../shared/styles/Style';
+import { Checkbox, ContentAddEdit, ContentInfo, ButtonAdd } from './Style';
 
 import { IResponse, ITodoItem } from '../../../../shared/interfaces/index';
 
 import { addTodo, setVisibility } from '../../actions';
 import todosHttp from '../../utils/http';
 
-interface IStatePopUp {
+interface IStateAddEdit {
   label?: string;
   completed?: boolean;
 }
 
-interface IPropsPopUp {
+interface IPropsAddEdit {
   visibility?: boolean;
   todos?: ITodoItem[];
   setVisibility?: (visibility: boolean) => void;
   addTodo?: (todos: ITodoItem) => void;
 }
 
-class PopUp extends Component<IPropsPopUp, IStatePopUp> {
+class AddEdit extends Component<IPropsAddEdit, IStateAddEdit> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -33,15 +33,15 @@ class PopUp extends Component<IPropsPopUp, IStatePopUp> {
   public render() {
     if (this.props.visibility) {
       return (
-        <ContentPopUp>
+        <ContentAddEdit>
           <ContentInfo>
             <TextInput type="text" title="label" value={ this.state.label! } onChange={(event) => { this.setState({ label: event.target.value }); }}></TextInput>
             <Checkbox type="checkbox" title="completed"
                 checked={this.state.completed!}
                 onChange={event => this.setState({ completed: event.target.checked })}></Checkbox>
           </ContentInfo>
-          <Button disabled={ (this.state.label!.length === 0) } onClick={ (event) => this.addTodo(event) }>Add Todo</Button>
-        </ContentPopUp>
+          <ButtonAdd disabled={ (this.state.label!.length === 0) } variant="contained" color="secondary" onClick={ (event) => this.addTodo(event) }>Add Todo</ButtonAdd>
+        </ContentAddEdit>
       );
     }
     return null;
@@ -64,4 +64,4 @@ const mapDispatchToProps = (dispatch: any) => ({
   addTodo: (todos: ITodoItem) => dispatch(addTodo(todos)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PopUp);
+export default connect(mapStateToProps, mapDispatchToProps)(AddEdit);

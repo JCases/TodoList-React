@@ -2,34 +2,14 @@ import Style from 'styled-components';
 
 import { Link } from 'react-router-dom';
 
-import { Button } from '../../shared/styles/Style';
-
-export const ContentMain = Style.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    background-color: #FFFFFF;
-    overflow-y: auto;
-    height: 60vh;
-    width: 50vw;
-    overflow-x: hidden;
-
-    ::-webkit-scrollbar {
-        width: 2px;
-        background-color: #263238;
-    }
-    ::-webkit-scrollbar-thumb {
-        background-color: #212121;
-    }
-    ::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-        background-color: #F5F5F5;
-    }
-`;
+import { Button, Card } from '@material-ui/core';
 
 export const PopUpButton = Style(Button)`
+    && {
     height: 2rem;
     width: 6rem;
+    margin: 10px;
+    }
 `;
 
 export const CustomLink = Style(Link)`

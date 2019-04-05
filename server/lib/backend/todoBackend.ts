@@ -12,7 +12,7 @@ class TodoBackend {
 
   public async createTodo(todo: ITodoItem) {
     if (todo.label && todo.label.length === 0) return { error: { code: Errors.incorrectRequest } };
-    return { result: (await models.Todo.create( { ...todo } )).dataValues };
+    return { result: (await models.Todo.create( { ...todo } )).getDataValue };
   }
 
   public async updateTodo(todo: ITodoItem) {

@@ -20,10 +20,6 @@ export const ContentInfo = Style.div`
     display: flex;
 `;
 
-export const Checkbox = Style.input`
-  margin-left: 2vw;
-`;
-
 export const ButtonAdd = Style(Button)`
     && {
       margin: 10px;

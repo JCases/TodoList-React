@@ -4,8 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 
 import AddEdit from '../../components/AddEdit/AddEdit';
 import { Header } from '../../components/Header/Header';
-import Main from '../../components/Main/Main';
 import { Login } from '../../components/Login/Login';
+import { Main } from '../../components/Main/Main';
 
 import { Provider } from 'react-redux';
 import { store } from '../../reducers/index';

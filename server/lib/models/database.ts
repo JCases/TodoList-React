@@ -30,18 +30,25 @@ class Database {
     this.mSequelize.addModels([__dirname + '*/*.model.ts']);
 
     this.mModels = this.getModels();
-    console.log(this.mModels);
+    // console.log(this.mModels);
 
     this.mSequelize.sync({ force: true }).then(async result => {
       if ((await this.mModels.Todo.count()) === 0) {
-          const user = this.mModels.User.create({ name: 'Javier', token: '1234', password: 'S3CR3ET0' });
-          this.mModels.Todo.create({ label: 'Hacer un Todo List', completed: true, user });
-          this.mModels.Todo.create({ label: 'Entender la estructura de Jose', user });
-          this.mModels.Todo.create({ label: 'Jose, el Styled Components es una mierda', completed: true, user });
-          this.mModels.Todo.create({ label: 'Hola a todos chavales, bienvenidos a un nuevo video...', user });
-          this.mModels.Todo.create({ label: 'Me quiero morir porque mi vida es una mierda: Sergio.', user });
+          await this.mModels.User.create({ name: 'Javier', password: 'S3CR3ET0' }).then(async (r) => {
+            for (const i in r) {
+              if (r.hasOwnProperty(i)) {
+                const element = r[i];
+                console.log(element)
+              }
+            }
+            r.$create('todo', { label: 'Hacer un Todo List', completed: true, userId: r.id }).catch(e => console.log(e));
+            // r.$create('todo', { label: 'Entender la estructura de Jose', userId: r.id }).catch(e => console.log(e));
+            // r.$create('todo', { label: 'Jose, el Styled Components es una mierda', completed: true, userId: r.id }).catch(e => console.log(e));
+            // r.$create('todo', { label: 'Hola a todos chavales, bienvenidos a un nuevo video...', userId: r.id }).catch(e => console.log(e));
+            // r.$create('todo', { label: 'Me quiero morir porque mi vida es una mierda: Sergio.', userId: r.id }).catch(e => console.log(e));
+          });
       }
-      console.log(await this.mModels.Todo.findAll());
+      // console.log(await this.mModels.Todo.findAll());
     });
   }
 

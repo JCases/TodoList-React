@@ -1,4 +1,4 @@
-import {Table, Column, Model, DataType, PrimaryKey, Default, AllowNull, BelongsTo, Length} from 'sequelize-typescript';
+import {Table, Column, Model, DataType, PrimaryKey, Default, AllowNull, BelongsTo, Length, ForeignKey, Unique} from 'sequelize-typescript';
 import User from './user.model';
 
 @Table({ timestamps: true, paranoid: true })
@@ -17,6 +17,12 @@ export default class Todo extends Model<Todo> {
   @Column
   completed?: boolean;
 
-  @BelongsTo(() => User, { foreignKey: 'id' })
+  @AllowNull(false)
+  @Unique(false)
+  @ForeignKey(() => User)
+  @Column
+  userId?: number;
+
+  @BelongsTo(() => User)
   user?: User;
 }

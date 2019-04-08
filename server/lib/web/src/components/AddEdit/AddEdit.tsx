@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { Checkbox, TextField } from '@material-ui/core';
 import { TextInput } from '../../shared/styles/Style';
-import { Checkbox, ContentAddEdit, ContentInfo, ButtonAdd } from './Style';
+import { ButtonAdd, ContentAddEdit, ContentInfo } from './Style';
 
 import { IResponse, ITodoItem } from '../../../../shared/interfaces/index';
 
@@ -31,20 +32,18 @@ class AddEdit extends Component<IPropsAddEdit, IStateAddEdit> {
   }
 
   public render() {
-    if (this.props.visibility) {
-      return (
-        <ContentAddEdit>
-          <ContentInfo>
-            <TextInput type="text" title="label" value={ this.state.label! } onChange={(event) => { this.setState({ label: event.target.value }); }}></TextInput>
-            <Checkbox type="checkbox" title="completed"
-                checked={this.state.completed!}
-                onChange={event => this.setState({ completed: event.target.checked })}></Checkbox>
-          </ContentInfo>
-          <ButtonAdd disabled={ (this.state.label!.length === 0) } variant="contained" color="secondary" onClick={ (event) => this.addTodo(event) }>Add Todo</ButtonAdd>
-        </ContentAddEdit>
-      );
-    }
-    return null;
+    return (
+      <ContentAddEdit>
+        <ContentInfo>
+          <TextField type="text" title="label" value={ this.state.label! } style={ { padding: 0, marginLeft: '2vw' } }
+            onChange={(event) => { this.setState({ label: event.target.value }); }}></TextField>
+          <Checkbox type="checkbox" title="completed"
+            checked={this.state.completed!}
+            onChange={event => this.setState({ completed: event.target.checked })}></Checkbox>
+        </ContentInfo>
+        <ButtonAdd disabled={ (this.state.label!.length === 0) } variant="contained" color="secondary" onClick={ (event) => this.addTodo(event) }>Add Todo</ButtonAdd>
+      </ContentAddEdit>
+    );
   }
 
   private addTodo(event: any) {
@@ -58,10 +57,7 @@ class AddEdit extends Component<IPropsAddEdit, IStateAddEdit> {
   }
 }
 
-const mapStateToProps = (state: any) => ({ visibility: state.todos!.visible });
-const mapDispatchToProps = (dispatch: any) => ({
-  setVisibility: (visibility: boolean) => dispatch(setVisibility(visibility)),
-  addTodo: (todos: ITodoItem) => dispatch(addTodo(todos)),
-});
+const mapStateToProps = (state: any) => ({});
+const mapDispatchToProps = (dispatch: any) => ({ addTodo: (todos: ITodoItem) => dispatch(addTodo(todos)) });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddEdit);

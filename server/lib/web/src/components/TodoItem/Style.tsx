@@ -7,7 +7,7 @@ import { Cancel } from 'styled-icons/material/Cancel';
 import { Delete } from 'styled-icons/material/Delete';
 import { Save } from 'styled-icons/material/Save';
 
-import { green, red, blueGrey } from '@material-ui/core/colors';
+import { blueGrey, green, red } from '@material-ui/core/colors';
 
 export const ContentTodoItem = Style.div`
   display: flex;
@@ -28,10 +28,6 @@ export const StructureTodoItem = Style.div`
 export const Text = Style.span`
   font-size: 14px;
   padding-right: 4vw;
-`;
-
-export const Checkbox = Style.input`
-  padding-left: 4vw;
 `;
 
 export const ButtonsActions = Style(Fab)`

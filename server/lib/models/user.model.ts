@@ -9,9 +9,6 @@ export default class User extends Model<User> {
   id?: string;
 
   @Unique
-  @Column
-  token?: string;
-
   @Length({ min: 2, max: 40 })
   @Column
   name?: string;

@@ -1,4 +1,4 @@
-import {Table, Column, Model, DataType, PrimaryKey, Default, AllowNull, BelongsTo, Length, ForeignKey, Unique} from 'sequelize-typescript';
+import { Table, Column, Model, DataType, PrimaryKey, Default, AllowNull, BelongsTo, Length, ForeignKey, Unique } from 'sequelize-typescript';
 import User from './user.model';
 
 @Table({ timestamps: true, paranoid: true })

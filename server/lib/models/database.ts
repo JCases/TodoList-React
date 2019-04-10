@@ -34,19 +34,14 @@ class Database {
 
     this.mSequelize.sync({ force: true }).then(async result => {
       if ((await this.mModels.Todo.count()) === 0) {
-          await this.mModels.User.create({ name: 'Javier', password: 'S3CR3ET0' }).then(async (r) => {
-            for (const i in r) {
-              if (r.hasOwnProperty(i)) {
-                const element = r[i];
-                console.log(element)
-              }
-            }
-            r.$create('todo', { label: 'Hacer un Todo List', completed: true, userId: r.id }).catch(e => console.log(e));
-            // r.$create('todo', { label: 'Entender la estructura de Jose', userId: r.id }).catch(e => console.log(e));
-            // r.$create('todo', { label: 'Jose, el Styled Components es una mierda', completed: true, userId: r.id }).catch(e => console.log(e));
-            // r.$create('todo', { label: 'Hola a todos chavales, bienvenidos a un nuevo video...', userId: r.id }).catch(e => console.log(e));
-            // r.$create('todo', { label: 'Me quiero morir porque mi vida es una mierda: Sergio.', userId: r.id }).catch(e => console.log(e));
-          });
+        await this.mModels.User.create({ name: 'Javier', password: 'S3CR3ET0' }).then(async (r) => {
+          r.createTodo({ label: 'Pues funciona y todo', completed: true });
+          r.createTodo({ label: 'La FK en 1:M se pone en el M (Y suele ser la ID del 1) 🤠', completed: true });
+          r.createTodo({ label: 'No hace falta poner el userID (Por que es la FK)', completed: true });
+          r.createTodo({ label: 'Leer la documentacion es bien', completed: false });
+          const todos = await r.getTodos();
+          console.dir(todos.map(t => ({ id: t.id, label: t.label })));
+        });
       }
       // console.log(await this.mModels.Todo.findAll());
     });

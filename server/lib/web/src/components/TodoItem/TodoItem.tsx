@@ -67,7 +67,7 @@ class TodoItem extends Component<IPropsTodoItem, IStateTodoItem> {
             </React.Fragment>
             :
             <React.Fragment>
-              <TextField type="text" id="label" label="Todo" value={this.state.newLabel} onChange={(event) => { this.setState({ newLabel: event.target.value }); }}></TextField>
+              <TextField type="text" id="label" label="Todo" style={ { width: '76%' } } value={this.state.newLabel} onChange={(event) => { this.setState({ newLabel: event.target.value }); }}></TextField>
               <div>
                 <MuiThemeProvider theme={ThemeDelete}>
                   <ButtonsActions color="primary" onClick={() => this.onEditClose(Buttons.delete)}><DeleteIcon /></ButtonsActions>

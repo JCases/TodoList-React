@@ -1,8 +1,6 @@
 import Style from 'styled-components';
 
-import { Card } from '@material-ui/core';
-
-export const ContentMain = Style(Card)`
+export const ContentMain = Style.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -11,6 +9,7 @@ export const ContentMain = Style(Card)`
     height: 60vh;
     width: 50vw;
     overflow-x: hidden;
+    border-radius: 10px;
 
     ::-webkit-scrollbar {
         width: 2px;

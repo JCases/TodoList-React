@@ -36,7 +36,6 @@ class ListTodo extends Component<IPropsPopUp, IStatePopUp> {
     const { todos } = this.props;
     return (
       <ContentListTodo>
-        <TodoItem key="1" id="1" label="TEST" completed={false} />
         { todos ? todos!.map(t => <TodoItem key={t.id} id={t.id} label={t.label} completed={t.completed} />) : null}
       </ContentListTodo>
     );

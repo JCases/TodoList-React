@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { Checkbox, TextField } from '@material-ui/core';
-import { TextInput } from '../../shared/styles/Style';
 import { ButtonAdd, ContentAddEdit, ContentInfo } from './Style';
 
 import { IResponse, ITodoItem } from '../../../../shared/interfaces/index';
@@ -30,7 +29,7 @@ class AddEdit extends Component<IPropsAddEdit, IStateAddEdit> {
       completed: false,
     };
   }
-
+  
   public render() {
     return (
       <ContentAddEdit>

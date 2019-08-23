@@ -256,12 +256,7 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-bluebird@^3.5.0:
-  version "3.5.3"
-  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.3.tgz#7d01c6f9616c9a51ab0f8c549a79dfe6ec33efa7"
-  integrity sha512-/qKPUQlaW1OyR51WeCPBvRnAlnZFUJkCSG5HzGnuIqhgyJtF+T94lFnn33eiazjRm2LAHVy2guNnaq48X9SJuw==
-
-bluebird@^3.5.3:
+bluebird@^3.5.0, bluebird@^3.5.3:
   version "3.5.4"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.4.tgz#d6cc661595de30d5b3af5fcedd3c0b3ef6ec5714"
   integrity sha512-FG+nFEZChJrbQ9tIccIfZJBz3J7mLrAhxakAbnrJWn8d7aKOC+LWifa0G+p4ZqKp4y13T7juYvdhq9NzKdsrjw==
@@ -1421,9 +1416,9 @@ sequelize-typescript@^1.0.0-alpha.9:
     glob "7.1.2"
 
 sequelize@^5.2.11:
-  version "5.2.15"
-  resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-5.2.15.tgz#3e0b57716491ad89f7288ac04a574ce754f833c2"
-  integrity sha512-xXTgV+FVqVCpBuC/6kQV2f9aSs5NSSKESx6TsuLHc4TzQy1Q7lWQHwXskBt6cBfQCY899z4iHYpAskEecVUO7w==
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-5.3.0.tgz#e62e70ba65a68b8fa76e01c026456211ac500a05"
+  integrity sha512-UYW7Surds+2zR+UfRQ/IbJ8gg0bSvnIrBvmPPNax+Z9NgSCOibJs5BoM5d+OK0NHMsZCVGYBjI/6ZzMXgDtOHw==
   dependencies:
     bluebird "^3.5.0"
     cls-bluebird "^2.1.0"
